@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2019_08_25_222254) do
   create_table "product_warehouses", force: :cascade do |t|
     t.integer "product_id"
     t.integer "warehouse_id"
-    t.integer "item_count"
-    t.integer "low_item_threshold"
+    t.integer "item_count", default: 0
+    t.integer "low_item_threshold", default: 10
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_product_warehouses_on_product_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_08_25_222254) do
   create_table "warehouses", force: :cascade do |t|
     t.string "wh_code"
     t.string "name"
-    t.string "pincode"
+    t.integer "pincode"
     t.integer "max_capacity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
