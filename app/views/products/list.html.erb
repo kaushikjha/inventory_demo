@@ -21,7 +21,7 @@
       <td><%= product_warehouse.sku_code %></td>
       <td><%= product_warehouse.product_name %></td>
       <% warehouse_arr.each do |warehouse_name| %>
-      <td>
+      <td class="<%= background_color(@product_warhouses["#{warehouse_name}"].find{|p| p.sku_code == product_warehouse.sku_code}) %>">
         <%=@product_warhouses["#{warehouse_name}"].find{|p| p.sku_code == product_warehouse.sku_code}.item_count%>
       </td>
       <%end %>
