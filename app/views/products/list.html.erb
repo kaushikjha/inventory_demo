@@ -18,7 +18,7 @@
   <tbody>
   <% @product_warhouses.first.last.each do |product_warehouse| %>
     <tr>
-      <td><%= product_warehouse.sku_code %></td>
+      <td><a href="<%=edit_product_path(id: product_warehouse.product_id) %>"><%= product_warehouse.sku_code %></a></td>
       <td><%= product_warehouse.product_name %></td>
       <% warehouse_arr.each do |warehouse_name| %>
       <td class="<%= background_color(@product_warhouses["#{warehouse_name}"].find{|p| p.sku_code == product_warehouse.sku_code}) %>">

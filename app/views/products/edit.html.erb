@@ -1,2 +1,40 @@
 <h1>Products#edit</h1>
-<p>Find me in app/views/products/edit.html.erb</p>
+<%= form_with(url: @product, method: "put") do %>
+<div class="form-group row">
+  <label for="example-text-input" class="col-2 col-form-label">Sku Code</label>
+  <div class="col-10">
+    <input class="form-control" disabled type="text" value="<%=@product.sku_code %>">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-search-input" class="col-2 col-form-label">Name</label>
+  <div class="col-10">
+    <input class="form-control" type="text" value="<%=@product.name %>" id="example-search-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-email-input" class="col-2 col-form-label">Price</label>
+  <div class="col-10">
+    <input class="form-control" type="text" value="<%=@product.price %>" id="example-email-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-url-input" class="col-2 col-form-label">Item Count</label>
+  <div class="col-10">
+    <input class="form-control" type="number" value="<%=@product.product_warehouses.first.item_count %>" id="example-url-input">
+  </div>
+</div>
+<div class="form-group row">
+  <label for="example-tel-input" class="col-2 col-form-label">Low Item Threshold</label>
+  <div class="col-10">
+    <input class="form-control" type="number" value="<%=@product.product_warehouses.first.low_item_threshold %>" id="example-tel-input">
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-2"></div>
+  <div class="col-10">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+</div>
+<%end %>

@@ -5,5 +5,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.includes(:product_warehouses).find(params[:id])
+  end
+  def update
+
   end
 end
