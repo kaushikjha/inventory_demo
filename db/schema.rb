@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_08_25_222254) do
     t.integer "low_item_threshold", default: 10
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id", "warehouse_id"], name: "index_product_warehouses_on_product_id_and_warehouse_id"
     t.index ["product_id"], name: "index_product_warehouses_on_product_id"
     t.index ["warehouse_id"], name: "index_product_warehouses_on_warehouse_id"
   end

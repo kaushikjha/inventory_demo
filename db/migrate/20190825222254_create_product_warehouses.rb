@@ -7,6 +7,8 @@ class CreateProductWarehouses < ActiveRecord::Migration[6.0]
       t.integer :low_item_threshold, default: 10
 
       t.timestamps
+
+      t.index [:product_id, :warehouse_id]
     end
   end
 end
