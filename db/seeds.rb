@@ -8,10 +8,14 @@
 #
 # Seed product(60 items) for initial setup  in development
 sku_code_init = 10001
-60.times do |i|
-  puts "ISP#{sku_code_init + i}"
-  Product.create(sku_code: "ISP#{sku_code_init + i}", name: Faker::Commerce.product_name, price: Faker::Commerce.price)
-end
+# 60.times do |i|
+#   puts "ISP#{sku_code_init + i}"
+#   Product.create(sku_code: "ISP#{sku_code_init + i}", name: Faker::Commerce.product_name, price: Faker::Commerce.price)
+# end
+
+# Bulk insertion of example products and this is necessary to run application othrwise it will throw error
+example_products = 60.times.map {|i| {sku_code: "ISP#{sku_code_init + i}", name: Faker::Commerce.product_name, price: Faker::Commerce.price,created_at:Time.now,updated_at:Time.now}}
+Product.insert_all(example_products)
 
 # create default warehouse mumbai, new delhi and bangalore
 ["Mumbai": 400031,"New Delhi":110016,"Bangalore":560070].each do |value|
@@ -19,7 +23,7 @@ end
   i = 1
   value.each do |k,v|
     Warehouse.create(wh_code: "ISPRAVA000#{i}", name: k, pincode: v, max_capacity: 100000) do |warehouse|
-      warehouse.product_ids = product_ids
+      warehouse.product_ids = product_ids # item_count and threshold count is initialized inside migration
     end
     i = i+1
   end
