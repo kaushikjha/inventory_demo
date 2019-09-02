@@ -2,7 +2,18 @@
   <div class="col-md-8">
     <h1>Products#edit</h1>
 
-    <%= form_with(model: @product) do |form| %>
+    <%= form_with(model: @product, local: true) do |form| %>
+      <% if @product.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this Product from being saved:</h2>
+
+          <ul>
+            <% @product.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <div class="form-group row">
         <%= form.label :sku_code, class: 'col-2 col-form-label' %>
         <div class="col-8">
