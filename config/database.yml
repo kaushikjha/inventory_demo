@@ -24,22 +24,20 @@
 #  <<: *default
 #  database: db/production.sqlite3
 
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  username: root
-  password: root
-  host: localhost
-  port: 3306
-
 development:
-  <<: *default
-  database: isprava_dev
+  adapter: postgresql
+  host: localhost
+  username: user
+  database: app-dev
 
 test:
-  <<: *default
-  database: isprava_test
+  adapter: postgresql
+  host: localhost
+  username: user
+  database: app-dev
 
 production:
-  <<: *default
-  database: isprava_production
+  adapter: postgresql
+  host: localhost
+  username: user
+  database: app-dev
